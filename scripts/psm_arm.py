@@ -51,7 +51,8 @@ from joint_pos_recorder import JointPosRecorder
 jpRecorder = JointPosRecorder()
 
 class PSM:
-    def __init__(self, client, name):
+    def __init__(self, client, name, save_jp):
+        self.save_jp = save_jp
         self.client = client
         self.name = name
         self.base = self.client.get_obj_handle(name + '/baselink')
@@ -135,7 +136,9 @@ class PSM:
         self._ik_solution = enforce_limits(ik_solution)
         self.move_jp(self._ik_solution)
         # save jp
-        # jpRecorder.record(self._ik_solution) ######record joint angles
+
+        if self.save_jp:
+            jpRecorder.record(self._ik_solution) ######record joint angles
 
     def optimize_jp(self, jp):
         # Optimizing the tool shaft roll angle
