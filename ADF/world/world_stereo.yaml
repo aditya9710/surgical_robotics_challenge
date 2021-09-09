@@ -49,8 +49,8 @@ cameraL:
   field view angle: 1.2
   monitor: 1
   parent: BODY CameraFrame
-  # publish image: True
-  # publish image resolution: {width: 1920, height: 1080}
+  publish image: True
+  publish image resolution: {width: 1920, height: 1080}
   # publish depth: True
   # depth compute shaders:
   #   path: /home/adnan/ambf/ambf_shaders/depth
@@ -69,6 +69,8 @@ cameraR:
   field view angle: 1.2
   monitor: 2
   parent: BODY CameraFrame
+  # publish image: True
+  # publish image resolution: { width: 1920, height: 1080 }
   # publish depth: True
   # multipass: True
 
@@ -81,6 +83,9 @@ camera3:
   clipping plane: {near: 0.01, far: 10.0}
   field view angle: 0.8
   monitor: 2
+  parent: BODY CameraFrame
+  # publish image: True
+  # publish image resolution: { width: 1920, height: 1080 }
   # parent: /ambf/env/BODY Occulus
   # orthographic view width: 6
-# device: Razer Hydra
+  # device: Razer Hydra
