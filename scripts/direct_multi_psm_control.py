@@ -42,7 +42,14 @@
 #     \version   1.0
 # */
 # //==============================================================================
+# import sys
+# import os
+# dynamic_path = "/home/jackzhy/ambf_2/ambf"
+# print(dynamic_path)
+# sys.path.append(dynamic_path)
+
 from psmIK import *
+# import psmIK
 from ambf_client import Client
 from psm_arm import PSM
 from ecm_arm import ECM
@@ -68,7 +75,10 @@ import pickle
 # with open('result_try') as f:
 #     jp_values = json.load(f)
 
-with open('./joint_data/goal_2/goal2.pickle','rb') as fp:
+# name = '/home/jackzhy/catkin_ws/src/learning_surgical_joints/goal_1/goal1.pickle'
+name = '/home/jackzhy/catkin_ws/src/learning_surgical_joints/joint_test_1.pickle'  ### change the file path
+
+with open(name,'rb') as fp:
     jp_values = pickle.load(fp)
 
 class ControllerInterface:
@@ -114,10 +124,17 @@ class ControllerInterface:
         # self.cmd_rpy = self._T_c_b.M * self.leader.measured_cp().M * Rotation.RPY(np.pi, 0, np.pi / 2)
         # self.T_IK = Frame(self.cmd_rpy, self.cmd_xyz)
         # self.active_psm.servo_cp(self.T_IK)
-        self.active_psm.servo_jp(self.jp_values[self.counter])
-        self.active_psm.set_jaw_angle(0.0)
-        self.active_psm.run_grasp_logic(0.0)
-        self.counter = self.counter + 1
+
+        if self.counter == len(self.jp_values):
+            print('Finish running!\n')
+            self.counter = self.counter + 1
+        elif self.counter < len(self.jp_values):
+            self.active_psm.servo_jf(self.jp_values[self.counter])
+            self.active_psm.set_jaw_angle(0.0)
+            self.active_psm.run_grasp_logic(0.0)
+            self.counter = self.counter + 1
+        else:
+            pass
 
     def update_visual_markers(self):
         # Move the Target Position Based on the GUI
