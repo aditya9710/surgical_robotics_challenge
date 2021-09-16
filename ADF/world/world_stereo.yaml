@@ -69,6 +69,8 @@ cameraR:
   field view angle: 1.2
   monitor: 2
   parent: BODY CameraFrame
+  publish image: True
+  publish image resolution: { width: 1920, height: 1080 }
   # publish image: True
   # publish image resolution: { width: 1920, height: 1080 }
   # publish depth: True

@@ -163,7 +163,7 @@ class ControllerInterface:
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument('--one', action='store', dest='run_psm_one', help='Control PSM1', default=False) ## if use PSM1, change False to True
+    parser.add_argument('--one', action='store', dest='run_psm_one', help='Control PSM1', default=True) ## if use PSM1, change False to True
     parser.add_argument('--two', action='store', dest='run_psm_two', help='Control PSM2', default=True)
     parser.add_argument('--three', action='store', dest='run_psm_three', help='Control PSM3', default=False) ## if use PSM3, change False to True
 
