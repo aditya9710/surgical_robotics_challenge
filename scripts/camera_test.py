@@ -19,8 +19,8 @@ class image_converter:
     self.bridge = CvBridge()
     self.image_subL = rospy.Subscriber("/ambf/env/cameras/cameraL/ImageData",Image,self.callbackL)
     self.image_subR = rospy.Subscriber("/ambf/env/cameras/cameraR/ImageData",Image, self.callbackR)
-    self.cvmsg_L = []
-    self.cvmsg_R = []
+    # self.cvmsg_L = []
+    # self.cvmsg_R = []
 
   def callbackL(self,data):
     try:
@@ -38,8 +38,8 @@ class image_converter:
     if cols > 60 and rows > 60 :
       cv2.circle(cv_image, (50,50), 10, 255)
 
-    #cv2.startWindowThread()
-    cv2.namedWindow("Image window Left")
+    # cv2.startWindowThread()
+    # cv2.namedWindow("Image window Left")
     cv2.imshow("Image window Left", cv_image)
     cv2.waitKey(3)
 
@@ -60,10 +60,10 @@ class image_converter:
     if cols > 60 and rows > 60 :
       cv2.circle(cv_image, (50,50), 10, 255)
 
-    #cv2.startWindowThread()
-    cv2.namedWindow("Image window Right")
+    # cv2.startWindowThread()
+    # cv2.namedWindow("Image window Right")
     cv2.imshow("Image window Right", cv_image)
-    cv2.waitKey(0)
+    cv2.waitKey(3)
 
     try:
       self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
@@ -87,11 +87,11 @@ if __name__ == '__main__':
     # msg_l, msg_r = main(sys.argv)
 
     # a_msg = [msg_l, msg_r]
-    # main(sys.argv)
+    main(sys.argv)
 
     # with open('cvmsg_R.pickle','w') as fp:
     #     cPickle.dump(a_msg,fp)
     #     fp.close()
 
-    with open('cvmsg_R.pickle','r') as fp:
-        itemlist = cPickle.load(fp)
+    # with open('cvmsg_R.pickle','r') as fp:
+    #     itemlist = cPickle.load(fp)
