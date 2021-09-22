@@ -55,7 +55,7 @@ Don't forget to build the repo using the instructions on AMBF's Readme
   The simulation is spawned in AMBF with the launch file and AMBF Description Format (ADF) files from this repo:
   The `ambf_simulator` binary resides in `ambf/bin/lin-x86_64`. You should be in that directory before running the commands below. Alternatively, you can create a soft-link to this binary.
   ```bash
-  ./ambf_simulator --launch_file ../../../surgical_robotics_challenge>/launch.yaml -l 0,1,3,4,14,15
+  ./ambf_simulator --launch_file ../../../surgical_robotics_challenge/launch.yaml -l 0,1,3,4,14,15
   ```
   This is an example of what the scene should look like (minus the motions of the PSM, Needle etc.):
 
@@ -66,7 +66,7 @@ Don't forget to build the repo using the instructions on AMBF's Readme
   To launch a different scene with just the needle (without any thread), you can run:
 
   ```bash
-  ./ambf_simulator --launch_file <surgical_robotics_challenge>/launch.yaml -l 0,1,3,4,13,14
+  ./ambf_simulator --launch_file ../../../surgical_robotics_challenge/launch.yaml -l 0,1,3,4,13,14
   ```
 
   And this is what the scene should now look like:
